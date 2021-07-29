@@ -45,6 +45,13 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Create migration
+```bash
+npx typeorm migration:create -n ArticleTable -d src/migrations
+npx typeorm migration:run
+npx typeorm migration:revert
+```
+
 ## Test
 
 ```bash
