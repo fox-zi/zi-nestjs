@@ -7,7 +7,7 @@ import {
 	PrimaryGeneratedColumn,
 } from "typeorm";
 
-export abstract class Base {
+export abstract class BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   @IsString()
   @IsNotEmpty()

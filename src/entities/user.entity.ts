@@ -1,47 +1,45 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from 'typeorm'
-import { Exclude, Expose } from 'class-transformer'
-
-@Entity({ name: 'users' })
-export class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: string;
+import {
+  Column,
+  Entity,
+  PrimaryColumn,
+  Unique,
+} from 'typeorm'
+import {
+  Exclude,
+  Expose
+} from 'class-transformer'
+import { BaseEntity } from './base.entity'
+import { IsNotEmpty, IsString } from 'class-validator';
+@Entity({
+  name: 'users'
+})
+export class UserEntity extends BaseEntity {
+  @PrimaryColumn()
+	@IsString()
+	@IsNotEmpty()
+  public id: string;
 
   @Unique(['email'])
   @Column()
-  email: string
+  public email: string
 
   @Column()
-  firstName: string
+  public first_name: string
 
   @Column()
-  lastName: string
+  public last_name: string
 
   @Exclude()
   @Column()
-  password: string
+  public password: string
 
-  @Column({ default: true })
-  isActive: boolean
-
-  @CreateDateColumn({
-    default: `now()`,
-    nullable: true,
+  @Column({
+    default: 0
   })
-  createdAt: string
-
-  @UpdateDateColumn({
-    default: `now()`,
-    nullable: true,
-  })
-  updatedAt: string
-
-  constructor(partial: Partial<User>) {
-    super()
-    Object.assign(this, partial)
-  }
+  public status: boolean
 
   @Expose()
   get fullName(): string {
-    return `${this.firstName} ${this.lastName}`
+    return `${this.first_name} ${this.last_name}`
   }
 }
