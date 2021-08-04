@@ -12,7 +12,7 @@ export class UsersService {
 
   async findOne(email: string): Promise<UserEntity | undefined> {
     this.logger.debug('oke')
-    return await this.userRepo[0].findOne({
+    return await this.userRepo.findOne({
       where: {"email": email}
     });
   }

@@ -29,7 +29,6 @@ export class UserEntity extends BaseEntity {
   @Column()
   public last_name: string
 
-  @Exclude()
   @Column()
   public password: string
 
