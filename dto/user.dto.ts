@@ -37,9 +37,10 @@ export class RegisterUserBodyDto {
 
 @Exclude()
 export class UserResponseDto {
-  @Expose()
+
   @IsString()
-  public password!: string;
+	@IsString()
+  public id!: string;
 
   @IsString()
   @Expose()
